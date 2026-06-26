@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Resume Analysis Result</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",Arial,sans-serif;
+}
+
+
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    color:#222;
+
+}
+
+
+
+
+.container{
+
+
+    width:800px;
+
+    background:#ffffff;
+
+    border-radius:25px;
+
+    padding:40px;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.25);
+
+
+}
+
+
+
+
+
+.title{
+
+
+    text-align:center;
+
+    font-size:32px;
+
+    color:#222;
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.section{
+
+
+    background:#f7f8ff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+    border:1px solid #eee;
+
+
+}
+
+
+
+
+
+.section h2{
+
+
+    color:#333;
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
+
+}
+
+
+
+
+.role{
+
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#667eea;
+
+
+}
+
+
+
+
+
+.score{
+
+
+    font-size:45px;
+
+    font-weight:bold;
+
+    color:#667eea;
+
+
+}
+
+
+
+
+
+.skill-box{
+
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+
+}
+
+
+
+
+.skill{
+
+
+    background:#667eea;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:25px;
+
+    font-size:15px;
+
+
+}
+
+
+
+
+
+.suggestion{
+
+
+    color:#333;
+
+    line-height:1.6;
+
+    font-size:16px;
+
+
+}
+
+
+
+
+
+.btn{
+
+
+    display:block;
+
+    width:220px;
+
+    margin:25px auto 0;
+
+
+    padding:14px;
+
+
+    text-align:center;
+
+    text-decoration:none;
+
+
+    background:#667eea;
+
+    color:white;
+
+
+    border-radius:30px;
+
+
+    font-weight:bold;
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+
+
+.btn:hover{
+
+
+    background:#5563d8;
+
+    transform:scale(1.05);
+
+
+}
+
+
+
+.no-skill{
+
+
+    color:#555;
+
+}
+
+
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1 class="title">
+
+🤖 AI Resume Analysis
+
+</h1>
+
+
+
+
+<div class="section">
+
+
+<h2>
+Recommended Role
+</h2>
+
+
+<div class="role">
+
+{{ role }}
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="section">
+
+
+<h2>
+Resume Score
+</h2>
+
+
+<div class="score">
+
+{{ score }}%
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="section">
+
+
+<h2>
+Detected Technologies
+</h2>
+
+
+
+<div class="skill-box">
+
+
+{% if skills %}
+
+
+{% for skill in skills %}
+
+
+<div class="skill">
+
+{{ skill }}
+
+</div>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p class="no-skill">
+
+No skills detected
+
+</p>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="section">
+
+
+<h2>
+AI Suggestions
+</h2>
+
+
+
+<p class="suggestion">
+
+
+Your resume analysis is complete.
+
+Consider adding more projects,
+certifications, GitHub links, and
+role-specific skills to improve your
+career opportunities.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<a href="/" class="btn">
+
+Analyze Another Resume
+
+</a>
+
+
+
+
+
+
+</div>
+
+
+</body>
+
+</html>
